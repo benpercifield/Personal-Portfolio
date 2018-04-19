@@ -1,3 +1,129 @@
+function updatePercents()
+{
+var count = SpreadsheetApp.getActiveSheet().getRange("A1").getValue() -1;
+
+//Profit
+var temp0 ="=TO_PERCENT((M";
+temp0 = temp0.concat(count);
+temp0 = temp0.concat("-M");
+temp0 = temp0.concat(count - 100);
+temp0 = temp0.concat(")/M");
+temp0 = temp0.concat(count - 100);
+temp0 = temp0.concat(")");
+
+SpreadsheetApp.getActiveSheet().getRange("B71").setValue(temp0);
+
+//tok0
+var temp1 ="=TO_PERCENT((X";
+temp1 = temp1.concat(count);
+temp1 = temp1.concat("-X");
+temp1 = temp1.concat(count - 100);
+temp1 = temp1.concat(")/X");
+temp1 = temp1.concat(count - 100);
+temp1 = temp1.concat(")");
+
+SpreadsheetApp.getActiveSheet().getRange("C71").setValue(temp1);
+
+//tok1
+var temp2 ="=TO_PERCENT((Y";
+temp2 = temp2.concat(count);
+temp2 = temp2.concat("-Y");
+temp2 = temp2.concat(count - 100);
+temp2 = temp2.concat(")/Y");
+temp2 = temp2.concat(count - 100);
+temp2 = temp2.concat(")");
+
+SpreadsheetApp.getActiveSheet().getRange("D71").setValue(temp2);
+
+//tok2
+var temp3 ="=TO_PERCENT((P";
+temp3 = temp3.concat(count);
+temp3 = temp3.concat("-P");
+temp3 = temp3.concat(count - 100);
+temp3 = temp3.concat(")/P");
+temp3 = temp3.concat(count - 100);
+temp3 = temp3.concat(")");
+
+SpreadsheetApp.getActiveSheet().getRange("E71").setValue(temp3);
+
+//tok3
+var temp4 ="=TO_PERCENT((Q";
+temp4 = temp4.concat(count);
+temp4 = temp4.concat("-Q");
+temp4 = temp4.concat(count - 100);
+temp4 = temp4.concat(")/Q");
+temp4 = temp4.concat(count - 100);
+temp4 = temp4.concat(")");
+
+SpreadsheetApp.getActiveSheet().getRange("F71").setValue(temp4);
+
+//tok4
+var temp5 ="=TO_PERCENT((R";
+temp5 = temp5.concat(count);
+temp5 = temp5.concat("-R");
+temp5 = temp5.concat(count - 100);
+temp5 = temp5.concat(")/R");
+temp5 = temp5.concat(count - 100);
+temp5 = temp5.concat(")");
+
+SpreadsheetApp.getActiveSheet().getRange("G71").setValue(temp5);
+
+//tok5
+var temp6 ="=TO_PERCENT((S";
+temp6 = temp6.concat(count);
+temp6 = temp6.concat("-S");
+temp6 = temp6.concat(count - 100);
+temp6 = temp6.concat(")/S");
+temp6 = temp6.concat(count - 100);
+temp6 = temp6.concat(")");
+
+SpreadsheetApp.getActiveSheet().getRange("H71").setValue(temp6);
+
+//tok6
+var temp7 ="=TO_PERCENT((V";
+temp7 = temp7.concat(count);
+temp7 = temp7.concat("-V");
+temp7 = temp7.concat(count - 100);
+temp7 = temp7.concat(")/V");
+temp7 = temp7.concat(count - 100);
+temp7 = temp7.concat(")");
+
+SpreadsheetApp.getActiveSheet().getRange("I71").setValue(temp7);
+
+//tok7
+var temp8 ="=TO_PERCENT((U";
+temp8 = temp8.concat(count);
+temp8 = temp8.concat("-U");
+temp8 = temp8.concat(count - 100);
+temp8 = temp8.concat(")/U");
+temp8 = temp8.concat(count - 100);
+temp8 = temp8.concat(")");
+
+SpreadsheetApp.getActiveSheet().getRange("J71").setValue(temp8);
+
+//tok7
+var temp9 ="=TO_PERCENT((T";
+temp9 = temp9.concat(count);
+temp9 = temp9.concat("-T");
+temp9 = temp9.concat(count - 100);
+temp9 = temp9.concat(")/T");
+temp9 = temp9.concat(count - 100);
+temp9 = temp9.concat(")");
+
+SpreadsheetApp.getActiveSheet().getRange("K71").setValue(temp9);
+
+//tok7
+var temp10 ="=TO_PERCENT((W";
+temp10 = temp10.concat(count);
+temp10 = temp10.concat("-W");
+temp10 = temp10.concat(count - 100);
+temp10 = temp10.concat(")/W");
+temp10 = temp10.concat(count - 100);
+temp10 = temp10.concat(")");
+
+SpreadsheetApp.getActiveSheet().getRange("L71").setValue(temp10);
+}
+
 function modifyCell(cellName, increase, prof, tok0, tok1, tok2, tok3, tok4, tok5, tok6, tok7, tok8, tok9, dominance, bili, vol)
 {
   var range = SpreadsheetApp.getActiveSheet().getRange(cellName);
@@ -106,16 +232,28 @@ function updateSpark()
 var count = SpreadsheetApp.getActiveSheet().getRange("A1").getValue() - 1;
 var temp = "=SPARKLINE(";
 
-//Profit
-var lower1 = "M".concat(count - 100);
-var upper1 = "M".concat(count);
+//Profit 200 before
+var lower1 = "M".concat(count - 200);
+var upper1 = "M".concat(count - 100);
 
 var temp1 = temp.concat(lower1);
 temp1 = temp1.concat(":");
 temp1 = temp1.concat(upper1);
 temp1 = temp1.concat(")");
 
+//Profit 100 before
+var lower11 = "M".concat(count - 100);
+var upper11 = "M".concat(count);
+
+var temp11 = temp.concat(lower11);
+temp11 = temp11.concat(":");
+temp11 = temp11.concat(upper11);
+temp11 = temp11.concat(")");
+
+
+
 SpreadsheetApp.getActiveSheet().getRange("J1").setValue(temp1);
+SpreadsheetApp.getActiveSheet().getRange("K1").setValue(temp11);
 
 //Tok 0
 var lower2 = "X".concat(count - 100);
@@ -413,6 +551,7 @@ function increaseLine2()
 {
   modifyCell("A1", true, "I3", "H7", "H8", "H9", "H10","H11","H12","H13","H14","H5","H6","F3","K4","F4");
   updateSpark();
+  updatePercents();
 }
 
 function decreaseLine2()
