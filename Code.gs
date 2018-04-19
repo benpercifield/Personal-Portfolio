@@ -2,6 +2,18 @@ function updatePercents()
 {
 var count = SpreadsheetApp.getActiveSheet().getRange("A1").getValue() -1;
 
+//Market Cap
+var temp ="=TO_PERCENT((O";
+temp = temp.concat(count);
+temp = temp.concat("-O");
+temp = temp.concat(count - 100);
+temp = temp.concat(")/O");
+temp = temp.concat(count - 100);
+temp = temp.concat(")");
+
+SpreadsheetApp.getActiveSheet().getRange("J3").setValue(temp);
+
+
 //Profit
 var temp0 ="=TO_PERCENT((M";
 temp0 = temp0.concat(count);
@@ -232,9 +244,9 @@ function updateSpark()
 var count = SpreadsheetApp.getActiveSheet().getRange("A1").getValue() - 1;
 var temp = "=SPARKLINE(";
 
-//Profit 200 before
-var lower1 = "M".concat(count - 200);
-var upper1 = "M".concat(count - 100);
+//Market Cap
+var lower1 = "O".concat(count - 100);
+var upper1 = "O".concat(count);
 
 var temp1 = temp.concat(lower1);
 temp1 = temp1.concat(":");
